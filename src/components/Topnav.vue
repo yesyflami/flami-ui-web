@@ -1,10 +1,11 @@
 <template>
-  <div class="TopNav">
-    <div class="logo" @click="toggleMenu">logo</div>
+  <div class="topnav">
+    <div class="logo">logo</div>
     <ul class="menu"> 
       <li>menu1</li>
       <li>menu2</li>
     </ul>
+    <span class="toggleAside" @click="toggleMenu"></span>
   </div>
 </template>
 <script lang="ts">
@@ -22,7 +23,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.TopNav {
+.topnav {
   background: pink;
   display: flex;
   padding: 16px;
@@ -55,6 +56,7 @@ export default {
     transform: translateY(-50%);
     display: none;
   }
+  // 页面宽度小于五百像素时，隐藏侧边栏，显示切换按钮
   @media (max-width: 500px) {
     > .menu {
       display: none;
