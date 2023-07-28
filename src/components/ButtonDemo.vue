@@ -2,7 +2,10 @@
   <div>
     ButtonDemo
     <div>
-      <Button @click="onClick" @focus="onClick" @mouseover="onClick">Hello</Button>
+      <Button>Hello</Button>
+      <Button theme="button">Hello</Button>
+      <Button theme="link">Hello</Button>
+      <Button theme="text">Hello</Button>
     </div>
   </div>
 </template>
