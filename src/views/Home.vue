@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopNav/>
+    <TopNav />
     <div class="banner">
       <h1>FlamiUI</h1>
       <h2>一个厉害的UI框架</h2>
@@ -14,7 +14,7 @@
 <script>
 import TopNav from '../components/TopNav.vue';
 export default {
-  components: {TopNav}
+  components: { TopNav }
 }
 </script>
 <style lang="scss" scoped>
@@ -25,10 +25,18 @@ export default {
   align-items: center;
   flex-direction: column;
   background: lightgreen;
-  > .actions{
+  font-weight: 800;
+
+  >h1,
+  >h2 {
+    font-weight: 700;
+  }
+
+  >.actions {
     padding: 8px 0;
+
     a {
-      margin:0 8px;
+      margin: 0 8px;
       background: #fff;
       display: inline-block;
       $h: 28px;

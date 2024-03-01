@@ -59,7 +59,7 @@ export default {
     display: none;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 520px) {
     >.menu {
       display: none;
     }
@@ -72,4 +72,5 @@ export default {
       display: inline-block;
     }
   }
-}</style>
+}
+</style>
