@@ -48,7 +48,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
-$red: red;
+$red: rgba(202, 0, 0, 0.856);
 $grey: grey;
 
 .flami-button {

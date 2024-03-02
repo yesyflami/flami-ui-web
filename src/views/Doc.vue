@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <Topnav class="nav" />
-    <div class="content">
+    <div class="content" :style="menuVisible ? {} : { paddingLeft: 0 }">
       <aside v-if="menuVisible">
         <h2>组件列表</h2>
         <ol>
@@ -26,8 +26,8 @@
   </div>
 </template>
 <script lang="ts">
-import Topnav from "../components/Topnav.vue";
 import { inject, Ref } from "vue";
+import Topnav from '../components/Topnav.vue';
 export default {
   components: { Topnav },
   setup() {
@@ -67,7 +67,7 @@ export default {
   >main {
     flex-grow: 1;
     padding: 16px;
-    background: #fff;
+    background: white;
   }
 }
 
