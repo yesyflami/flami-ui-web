@@ -1,7 +1,7 @@
 <template>
   <div class="gulu-tabs">
     <div class="gulu-tabs-nav" ref="container">
-      <div class="gulu-tabs-nav-item" v-for="(t, index) in titles" :ref="el => { if (el) navItems[index] = el }"
+      <div class="gulu-tabs-nav-item" v-for="(t, index) in titles" :ref="el => { if (t === selected) selectedItems = el }"
         @click="select(t)" :class="{ selected: t === selected }" :key="index">{{ t }}</div>
       <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
@@ -16,7 +16,7 @@
 <script lang="ts">
 import Tab from './Tab.vue'
 import {
-  computed, onMounted, onUpdated, ref
+  computed, onMounted, onUpdated, ref, watchEffect
 } from 'vue'
 export default {
   props: {
@@ -42,30 +42,36 @@ export default {
     const select = (title: string) => {
       context.emit('update:selected', title)
     }
-    const navItems = ref<HTMLDivElement[]>([])
+    // const navItems = ref<HTMLDivElement[]>([])
+    const selectedItems = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null) // 移动条
     const container = ref<HTMLDivElement>(null)
-
-    const x = () => {// 动态获取移动条条的宽度
-      const divs = navItems.value
-      const result = divs.filter(div => div.classList.contains('selected'))[0]
-      const { width } = result.getBoundingClientRect()
-      indicator.value.style.width = width + 'px'
-      // 动态设置移动条的位置
-      const { left: left1 } = container.value.getBoundingClientRect()
-      const { left: left2 } = result.getBoundingClientRect()
-      const left = left2 - left1
-      indicator.value.style.left = left + 'px'
-    }
     // onMounted只在第一次渲染执行
-    onMounted(x)
-    onUpdated(x)
+    // onMounted(x)
+    // onUpdated在更新时执行
+    // onUpdated(x)
+
+    // watchEffect =第一次挂载前 + onMounted + onUpdated
+    onMounted(() => {
+      watchEffect(() => {// 动态获取移动条条的宽度
+
+        const { width } = selectedItems.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        // 动态设置移动条的位置
+        const { left: left1 } = container.value.getBoundingClientRect()
+        const { left: left2 } = selectedItems.value.getBoundingClientRect()
+        const left = left2 - left1
+        indicator.value.style.left = left + 'px'
+
+      })
+    })
+
     return {
       defaults,
       titles,
       current,
       select,
-      navItems,
+      selectedItems,
       indicator,
       container
     }
