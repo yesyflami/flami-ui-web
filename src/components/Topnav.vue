@@ -1,13 +1,13 @@
 <template>
   <div class="topnav">
-    <div class="logo">
+    <router-link :to="{ path: '/' }" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-shandian"></use>
       </svg>
-    </div>
+    </router-link>
     <ul class="menu">
       <li>
-        <router-link to="/doc">文档{{ toggleMenuButtonVisible }}</router-link>
+        <router-link to="/doc">文档</router-link>
       </li>
     </ul>
     <svg class="toggleAside" @click="toggleMenu" v-if="toggleMenuButtonVisible">
