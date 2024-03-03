@@ -11,18 +11,33 @@
         </p>
       </div>
     </div>
-    <div class="features">
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-Vue"></use>
-      </svg>
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-typescript"></use>
-      </svg>
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-dengpao"></use>
-      </svg>
-    </div>
 
+
+  </div>
+  <div class="features">
+    <ul>
+      <li>
+        <svg>
+          <use xlink:href="#icon-Vue"></use>
+        </svg>
+        <h3>基于 Vue 3</h3>
+        <p>骄傲地使用了 Vue 3 Composition API</p>
+      </li>
+      <li>
+        <svg>
+          <use xlink:href="#icon-typescript"></use>
+        </svg>
+        <h3>基于 TypeScript </h3>
+        <p>源代码采用 TypeScript 书写（非严格检查）</p>
+      </li>
+      <li>
+        <svg>
+          <use xlink:href="#icon-dengpao"></use>
+        </svg>
+        <h3>代码易读</h3>
+        <p>每个组件的源代码都极其简洁</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -37,14 +52,55 @@ export default {
 .topnavAndBanner {
   background: rgb(214, 240, 255);
   background: linear-gradient(128deg, rgba(214, 240, 255, 1) 0%, rgba(133, 207, 249, 1) 46%, rgba(120, 188, 226, 1) 100%);
+  clip-path: ellipse(80% 60% at 50% 40%);
 }
 
 .features {
-  >svg {
-    width: 64px;
-    height: 64px;
+  margin: 64px auto;
+  width: 400px;
+
+  @media (min-width: 800px) {
+    width: 800px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
+
+  >ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    >li {
+      width: 400px;
+      margin: 16px 0;
+      display: grid;
+      justify-content: start;
+      align-content: space-between;
+      grid-template-areas:
+        "icon title"
+        "icon text";
+      grid-template-columns: 80px auto;
+      grid-template-rows: 1fr auto;
+
+      >svg {
+        grid-area: icon;
+        width: 64px;
+        height: 64px;
+      }
+
+      >h3 {
+        grid-area: title;
+        font-size: 22px;
+      }
+
+      >p {
+        grid-area: text
+      }
+    }
   }
 }
+
 
 .banner {
   padding: 100px 0;

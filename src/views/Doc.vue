@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Topnav class="nav" />
+    <Topnav class="nav" toggleMenuButtonVisible />
     <div class="content" :style="menuVisible ? {} : { paddingLeft: 0 }">
       <aside v-if="menuVisible">
         <h2>组件列表</h2>
@@ -25,6 +25,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { inject, Ref } from "vue";
 import Topnav from '../components/Topnav.vue';
@@ -36,6 +37,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .layout {
   display: flex;

@@ -1,33 +1,50 @@
 <template>
   <div class="topnav">
     <div class="logo">
-      <svg class="icon" aria-hidden="true">
+      <svg class="icon">
         <use xlink:href="#icon-shandian"></use>
       </svg>
     </div>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc">文档{{ toggleMenuButtonVisible }}</router-link>
+      </li>
     </ul>
-    <span class="toggleAside" @click="toggleMenu"></span>
+    <svg class="toggleAside" @click="toggleMenu" v-if="toggleMenuButtonVisible">
+      <use xlink:href="#icon-menu"></use>
+    </svg>
   </div>
 </template>
 
 <script lang="ts">
-import { inject, Ref } from "vue";
+import {
+  inject,
+  Ref
+} from "vue";
 export default {
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup() {
     const menuVisible = inject<Ref<boolean>>("menuVisible"); // get
     const toggleMenu = () => {
       menuVisible.value = !menuVisible.value;
     };
-    return { toggleMenu };
+    return {
+      toggleMenu
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+$color: #341542;
+
 .topnav {
+  color: $color;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -43,8 +60,9 @@ export default {
     margin-right: auto;
 
     >svg {
-      width: 24px;
-      height: 24px;
+      fill: $color;
+      width: 32px;
+      height: 32px;
     }
   }
 
@@ -59,14 +77,14 @@ export default {
   }
 
   >.toggleAside {
-    width: 24px;
-    height: 24px;
-    background: red;
+    width: 32px;
+    height: 32px;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    cursor: pointer;
   }
 
   @media (max-width: 520px) {
@@ -76,8 +94,6 @@ export default {
 
     >.logo {
       margin: 0 auto;
-
-
     }
 
     >.toggleAside {
