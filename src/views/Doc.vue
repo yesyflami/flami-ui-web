@@ -3,8 +3,9 @@
     <Topnav class="nav" toggleMenuButtonVisible />
     <div class="content" :style="menuVisible ? {} : { paddingLeft: 0 }">
       <aside v-if="menuVisible">
-        <h2>组件列表</h2>
+
         <ol>
+          <h2>文档</h2>
           <li>
             <router-link to="/doc/intro">介绍 </router-link>
           </li>
@@ -14,6 +15,7 @@
           <li>
             <router-link to="/doc/get-started">开始使用 </router-link>
           </li>
+          <h2>组件列表</h2>
           <li>
             <router-link to="/doc/switch">Switch 组件</router-link>
           </li>
@@ -83,7 +85,10 @@ export default {
 }
 
 aside {
-  background: lightblue;
+  z-index: 100;
+  font-weight: bold;
+  line-height: 32px;
+  color: #b3b3b3;
   width: 150px;
   padding: 16px;
   position: fixed;
@@ -91,16 +96,31 @@ aside {
   left: 0;
   padding-top: 70px;
   height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 
-  >h2 {
-    margin-bottom: 4px;
-  }
+
 
   >ol {
+    >h2 {
+      margin-bottom: 4px;
+      color: #423c54;
+      line-height: 40px;
+      font-weight: 800;
+    }
+
     >li {
       padding: 4px 0;
+
+      &:hover {
+        color: #341542;
+        transition: all 250ms;
+      }
     }
   }
+}
+
+.router-link-active {
+  color: #341542;
 }
 
 main {
