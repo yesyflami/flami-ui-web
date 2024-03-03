@@ -1,6 +1,10 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-shandian"></use>
+      </svg>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -8,6 +12,7 @@
     <span class="toggleAside" @click="toggleMenu"></span>
   </div>
 </template>
+
 <script lang="ts">
 import { inject, Ref } from "vue";
 export default {
@@ -20,9 +25,9 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .topnav {
-  background: pink;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -36,6 +41,11 @@ export default {
   >.logo {
     max-width: 6em;
     margin-right: auto;
+
+    >svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   >.menu {
@@ -66,6 +76,8 @@ export default {
 
     >.logo {
       margin: 0 auto;
+
+
     }
 
     >.toggleAside {
