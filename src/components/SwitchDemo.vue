@@ -9,21 +9,12 @@
 </template>
 
 <script lang="ts">
-import Switch from '../lib/Switch.vue'
 import Switch1Demo from './Switch1.demo.vue'
 import Switch2Demo from './Switch2.demo.vue'
-import Button from '../lib/Button.vue'
-import 'prismjs'
-import 'prismjs/themes/prism.css'
-const Prism = (window as any).Prism
-import {
-  ref
-} from 'vue'
+import { ref } from 'vue'
 import Demo from './Demo.vue'
 export default {
   components: {
-    Switch,
-    Button,
     Demo
   },
   setup() {
@@ -31,8 +22,7 @@ export default {
     return {
       bool,
       Switch1Demo,
-      Switch2Demo,
-      Prism
+      Switch2Demo
     }
   }
 }
